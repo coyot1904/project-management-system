@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Project Details</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="project-title">Project Details</h1>
+            <p id="project-description"></p>
+            <div id="task-list"></div>
+            <form id="task-form">
+                <h2>Add New Task</h2>
+                <input
+                    type="text"
+                    id="task-name"
+                    placeholder="Task Name"
+                    required
+                />
+                <textarea
+                    id="task-description"
+                    placeholder="Task Description"
+                ></textarea>
+                <select id="task-status">
+                    <option value="todo">To Do</option>
+                    <option value="in-progress">In Progress</option>
+                    <option value="done">Done</option>
+                </select>
+                <button type="submit">Add Task</button>
+            </form>
+            <a href="index.html">Back to Dashboard</a>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

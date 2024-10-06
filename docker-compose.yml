@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+    # Laravel PHP Application Container
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: laravel_app
+        ports:
+            - "8080:80"
+        volumes:
+            - .:/var/www/html
+        environment:
+            - APACHE_DOCUMENT_ROOT=/var/www/html/public
+        depends_on:
+            - db
+
+    # Database Container
+    db:
+        image: mysql:8.0
+        container_name: mysql_db
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD:
+            MYSQL_DATABASE: MagicPort
+            MYSQL_USER: laravel
+            MYSQL_PASSWORD:
+        volumes:
+            - db_data:/var/lib/mysql
+        ports:
+            - "3306:3306"
+
+    # Static Frontend Container
+    frontend:
+        build:
+            context: .
+            dockerfile: frontend.Dockerfile
+        container_name: frontend_app
+        ports:
+            - "8081:80"
+
+volumes:
+    db_data:
